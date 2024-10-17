@@ -162,3 +162,5 @@ cython_debug/
 DataSet Ajustado/
 dataset-ajustado/
 DataSet Ajustado.zip
+
+models/
