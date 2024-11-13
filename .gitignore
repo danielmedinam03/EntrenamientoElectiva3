@@ -161,6 +161,9 @@ cython_debug/
 
 DataSet Ajustado/
 dataset-ajustado/
+dataset-ajustado-150/
+Entrenamiento con fondo, sin fondo y normal/
+Entrenamiento con fondo, sin fondo y normal.rar
 DataSet Ajustado.zip
 
 models/

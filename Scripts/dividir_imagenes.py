@@ -4,10 +4,10 @@ import re
 from sklearn.model_selection import train_test_split
 
 # Ruta del dataset original que contiene las imágenes ya preprocesadas
-original_dataset_dir = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\DataSet Ajustado\DataSet fill background'
+original_dataset_dir = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\dataset-ajustado-150\DataSet remove background'
 
 # Directorios para los conjuntos de entrenamiento, validación y prueba
-base_dir = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\DataSet Ajustado'
+base_dir = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\dataset-ajustado-150'
 train_dir = os.path.join(base_dir, 'train')
 valid_dir = os.path.join(base_dir, 'valid')
 test_dir = os.path.join(base_dir, 'test')

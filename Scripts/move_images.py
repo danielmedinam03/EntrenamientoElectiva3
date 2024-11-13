@@ -2,8 +2,8 @@ import os
 import shutil
 
 # Define the source and destination directories
-source_directory = r'C:\Users\dmedina\Documents\Daniel\Ucc\10mo\Electiva 3\DataSet fill background'  # Cambia esto por la ruta a la carpeta original
-destination_directory = r'C:\Users\dmedina\Documents\Daniel\Ucc\10mo\Electiva 3\DataSetMove fill background'  # Cambia esto por la ruta de la nueva carpeta
+source_directory = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\dataset-ajustado\DataSet remove background'  # Cambia esto por la ruta a la carpeta original
+destination_directory = r'C:\Users\Usuario\Documents\DANIEL\UNIVERSIDAD_COOPERATIVA\DANIEL 10MO SEMESTRE\EntrenamientoElectiva3\dataset-ajustado-150\DataSet remove background'  # Cambia esto por la ruta de la nueva carpeta
 
 # Recorrer la carpeta principal
 def copy_images(source_dir, dest_dir, max_images=150):
@@ -18,6 +18,8 @@ def copy_images(source_dir, dest_dir, max_images=150):
         # Crear la carpeta correspondiente en el destino
         current_dest_dir = os.path.join(dest_dir, relative_path)
         if not os.path.exists(current_dest_dir):
+            current_dest_dir = current_dest_dir.replace('resized no_background', '')
+            current_dest_dir = current_dest_dir.rstrip()
             os.makedirs(current_dest_dir)
 
         # Filtrar los archivos para incluir solo las imágenes
@@ -30,8 +32,16 @@ def copy_images(source_dir, dest_dir, max_images=150):
         for image in selected_images:
             source_image_path = os.path.join(root, image)
             destination_image_path = os.path.join(current_dest_dir, image)
-            shutil.copy2(source_image_path, destination_image_path)
-            print(f"Copiado: {source_image_path} a {destination_image_path}")
+            try:
+                shutil.copy2(source_image_path, destination_image_path)
+                print(f"Copiado: {source_image_path} a {destination_image_path}")
+            except FileNotFoundError as e:
+                print(f"Error: No se pudo encontrar el archivo {source_image_path}. {e}")
+            except Exception as e:
+                print(f"Error desconocido al copiar {source_image_path}. {e}")
 
 # Ejecutar la función
-copy_images(source_directory, destination_directory)
+if os.path.exists(source_directory) and os.path.isdir(source_directory):
+    copy_images(source_directory, destination_directory)
+else:
+    print(f"Error: La ruta de origen '{source_directory}' no existe o no es un directorio válido.")
